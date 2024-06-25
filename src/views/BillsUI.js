@@ -1,6 +1,7 @@
 import VerticalLayout from './VerticalLayout.js'
 import ErrorPage from "./ErrorPage.js"
 import LoadingPage from "./LoadingPage.js"
+import { parseDate } from '../app/format.js'
 
 import Actions from './Actions.js'
 
@@ -20,8 +21,15 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
+  // console.log(data, 'data')
+  if (!data || !Array.isArray(data)) {
+    return ''
+  }
+  const sortData = data.sort((a, b) => parseDate(b.date) - parseDate(a.date))
+  // console.log(sortData, 'SortData')
+  return sortData.map(bill => row(bill)).join("")
 }
+
 
 export default ({ data: bills, loading, error }) => {
   
