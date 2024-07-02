@@ -60,6 +60,8 @@ export default class NewBill {
 
   handleSubmit = e => {
     e.preventDefault()
+    console.log("handleSubmit called");
+
 
     if (!this.isFileValid) {
       return
@@ -80,6 +82,8 @@ export default class NewBill {
       fileName: this.fileName,
       status: 'pending'
     }
+        console.log("Submitting bill:", bill);
+
     this.updateBill(bill)
     this.onNavigate(ROUTES_PATH['Bills'])
   }

@@ -21,12 +21,10 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
-  // console.log(data, 'data')
   if (!data || !Array.isArray(data)) {
     return ''
   }
   const sortData = data.sort((a, b) => parseDate(b.date) - parseDate(a.date))
-  // console.log(sortData, 'SortData')
   return sortData.map(bill => row(bill)).join("")
 }
 
