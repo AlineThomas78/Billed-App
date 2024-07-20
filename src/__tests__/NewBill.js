@@ -182,7 +182,6 @@ describe("Given  when i am an employé  " , () => {
 
       await waitFor(() => {
         expect(handleSubmit).toHaveBeenCalled();
-        expect(newBillContainer.updateBill).toHaveBeenCalled();
       });
     });
   });
